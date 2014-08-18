@@ -1,0 +1,547 @@
+// Mixins and variables  --------------------------------------------------------
+
+$rw_reg: 		400;
+$rw_bold: 		500;
+$rw_boldest: 	800;
+
+@mixin apple-text() {
+	text-shadow: 0px 1px 1px rgba(255,255,255,0.75);
+}
+
+@mixin shadowed-text() {
+	text-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+}
+
+body
+{
+	background: #393939;
+}
+
+.hero,
+.trusted-certified
+{
+	background: #dcdcdc;
+	text-align: center;
+	margin: 0;
+}
+
+main
+{
+	background: #fff;
+	padding: 45px 0 30px;
+}
+
+.trusted-certified
+{
+	background: #dcdcdc;
+}
+
+// Transform the menus
+.navbar,
+footer ul
+{
+	text-transform: uppercase;
+
+	span
+	{
+		text-transform: none;
+	}
+}
+
+// Main navigation
+.navbar
+{
+	border-radius: 0;
+	border: none;
+	margin: 0;
+
+	.caret
+	{
+		display: none;
+	}
+
+	.badge
+	{
+		text-shadow: none;
+		font-weight: 400;
+		background: #ff0000;
+	}
+}
+
+.navbar-toggle 
+{
+	margin-top: 25px;
+	border-color: $navbar-inverse-toggle-border-color;
+
+	&:hover,
+	&:focus 
+	{
+		background-color: $navbar-inverse-toggle-hover-bg;
+	}
+	
+	.icon-bar 
+	{
+		background-color: $navbar-inverse-toggle-icon-bar-bg;
+	}
+}
+
+.navbar-nav
+{
+	@media (min-width: $screen-sm-min)
+	{
+		float: right;
+	}
+
+	> li > a
+	{
+		padding-top: 32px;
+		padding-bottom: 31px;
+		color: #fff;
+		font-size: 16px;
+		@include shadowed-text;
+
+		&:hover,
+		&:focus
+		{
+			background: #616161;
+		}
+	}
+
+	> .active > a,
+	> .open > a
+	{
+		&,
+		&:hover,
+		&:focus 
+		{
+			background: #616161;
+		}
+	}
+
+	.dropdown-menu > li > a
+	{
+		&:hover,
+		&:focus 
+		{
+			background: #dcdcdc;
+		}
+
+	}
+	
+}
+
+.navbar-brand
+{
+	margin: 20px 0;
+	width: 165px;
+	height: 43px;
+	background: url('../img/escan-brand.png') no-repeat left top;
+	@include hide-text;
+}
+
+.subnav
+{
+	background: #a9a9a9;
+
+	@media (max-width: $screen-xs-max)
+	{
+		display: none;
+	} 
+
+	ul.nav.nav-tabs
+	{
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+
+		li
+		{
+			margin: 0;
+			border: none;
+
+			a
+			{
+				display: block;
+				color: $text-color;
+				text-align: center;
+				padding: 15px;
+				text-transform: uppercase;
+				font-size: 14px;
+				border: none;
+				border-radius: 0;
+
+				&:hover
+				{
+					background: #cdcdcd;
+					text-decoration: none;
+					border: none;
+				}
+			}
+
+			&.active > a
+			{
+				background: #cdcdcd;
+			}
+		}
+	}
+
+	.btn-group
+	{
+		.btn
+		{
+			border: none;
+			border-radius: none !important;
+			color: $text-color;
+
+			&:hover,
+			&.active
+			{
+				background: #cdcdcd;
+			}
+		}
+	}
+}
+
+footer
+{
+
+	.trusted-certified
+	{
+		padding: 25px;
+		text-transform: uppercase;
+		font-size: 20px;
+
+		img
+		{
+			margin: 0 25px; 
+		}
+	}
+	
+	.footer-links
+	{
+		padding: 20px 0;
+		color: #fff;
+	}
+
+	ul
+	{
+		padding: 0;
+		font-size: 14px;
+		list-style-type: none;
+		margin-bottom: 30px;
+
+		> li > a
+		{
+			color: #8d8d8d;
+
+			&:hover
+			{
+				color: #8d8d8d;
+			}
+		}
+	}
+
+	ul.first
+	{
+		> li > a
+		{
+			color: #fff;
+
+			&:hover
+			{
+				color: #fff;
+			}
+		}
+	}
+
+	.footer-payment-options
+	{
+		float: right;
+		margin: 0;
+		width: 165px;
+		height: 58px;
+		background: url('../img/footer-payment-options.png') no-repeat left top;
+		@include text-hide;
+	}
+
+	.fw-credit
+	{
+
+		display: block;
+		width: 235px;
+		height: 20px;
+		background: url('../img/fw-credit.png') no-repeat left top;
+		@include text-hide;
+	}
+}
+
+// Hero!
+.hero
+{
+	
+	.billboard
+	{
+		position: relative;
+		min-height: 400px;
+		background-position:50%;
+		background-repeat:no-repeat;
+		background-color: #6bab9f;
+		background-image: url('../img/hero-bg.jpg');
+		-webkit-background-size:cover;
+		-moz-background-size:cover;
+		-o-background-size:cover;
+		background-size:cover;
+		color: #fff;
+		padding: 100px 0;
+		@include shadowed-text;
+
+		h2,
+		p
+		{
+			font-size: 36px;
+			font-weight: $rw_bold;
+			text-transform: uppercase;
+		}
+
+		h2
+		{
+			font-size: 60px;
+			margin-top: 0px;
+		}
+
+		p
+		{
+			line-height: 36px;
+		}
+
+		.btn
+		{
+			@include apple-text;
+		}
+
+
+
+	}
+}
+
+.compatible
+{
+	background: #dcdcdc;
+	padding: 20px 0;
+	color: #393939;
+	text-align: center;
+
+	p
+	{
+		text-transform: uppercase;
+		font-size: 17px;
+		font-weight: $rw_bold;
+		margin-top: 20px;
+	}
+
+	.fa
+	{
+		font-size: 60px;
+		margin: 0 0 0 10px;
+	}
+
+	.os
+	{
+		text-align: right;
+
+		&.left
+		{
+			text-align: left;
+
+			.fa
+			{
+				margin: 0 10px 0 0;
+			}
+		}
+	}
+}
+
+.cta
+{
+	margin-bottom: 50px;
+
+	> .fa
+	{
+		display: block;
+		text-align: center;
+		font-size: 60px;
+		margin: 0;
+	}
+
+	h3
+	{
+		text-align: center;
+		font-size: 22px;
+		font-weight: $rw_bold;
+		margin: 20px 0;
+	}
+}
+
+.home-header
+{
+	text-align: center;
+	font-size: 30px;
+	font-weight: $rw_boldest;
+	margin-bottom: 30px;
+}
+
+.btn-default
+{
+	background: #dcdcdc;
+	border-radius: 0;
+	border: none;
+	border-bottom: solid 3px #9f9f9f;
+
+}
+
+
+.sidebar
+{
+	
+	ul
+	{
+		list-style-type: none;
+		padding: 0;
+
+		li
+		{
+			margin-bottom: 5px;
+		}
+	}
+}
+
+.page-header
+{
+	margin-top: 0;
+	border-bottom: none;
+	text-transform: uppercase;
+	font-size: 32px;
+	font-weight: $rw_reg;
+	letter-spacing: -0.5px;
+
+	span
+	{
+		text-transform: none;
+	}
+}
+
+.payment-panel
+{
+	padding: 20px 0 0;
+	background: #e4e4e4;
+	font-size: 15px;
+
+	select
+	{
+		max-width: 50px;
+		display: inline;
+	}
+
+	.price
+	{
+		text-align: right;
+		font-size: 30px;
+		font-weight: $rw_bold;
+		line-height: 26px;
+
+		small
+		{
+			font-size: 14px;
+			font-weight: $rw_reg;
+			color: #bbb;
+		}
+	}
+
+	.btn
+	{
+		font-size: 20px;
+		font-weight: $rw_bold;
+	}
+}
+
+.feature-container
+{
+	
+	.feature
+	{
+		font-size: 14px;
+		@include clearfix;
+
+		.icon
+		{
+			float: left;
+			font-size: 60px;
+			color: $text-color;
+		}
+
+		.media-heading
+		{
+			font-size: 16px;
+		}
+
+		
+	}
+}
+
+table.comparison-table
+{
+	text-align: center;
+
+	thead
+	{
+		tr > th
+		{
+			text-align: center;
+		}
+
+		tr > th:first-child
+		{
+			text-align: left;
+			width: 35%;
+		}
+	}
+
+	tbody
+	{
+		tr > td:first-child
+		{
+			text-align: left;
+		}
+
+		.fa
+		{
+			font-size: 18px;
+			color: #d4d4d4;
+		}
+
+		.fa-check
+		{
+			color: #1fa300;
+		}
+	}
+}
+
+.estore-listing
+{
+	padding: 20px 0;
+	border-top: solid 1px #ddd;
+
+	h3
+	{
+		margin-top: 0;
+	}
+}
+
+.remove-cart
+{
+	button
+	{
+		border: none;
+		background: transparent;
+	}
+}
